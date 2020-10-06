@@ -1,0 +1,17 @@
+main
+
+<div class="content" role="main">
+  authed: {{auth.isAuthenticated$ | async}}<br/>
+  <a [routerLink]="['']">to login</a><br/>
+
+  <div *ngIf="auth.isAuthenticated$ | async">
+    <button (click)="logout()">log out</button><br/>
+    <button (click)="makeApiCall()">Make api call</button><br/>
+
+    <pre>
+      <code>
+        {{weather | json}}
+      </code>
+    </pre>
+  </div>
+</div>

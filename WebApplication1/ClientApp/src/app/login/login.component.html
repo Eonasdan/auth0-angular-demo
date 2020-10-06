@@ -1,0 +1,21 @@
+<div class="content" role="main">
+  authed: {{auth.isAuthenticated$ | async}}
+  <div *ngIf="!(auth.isAuthenticated$ | async)">
+    <button (click)="login()">Log in</button>
+  </div>
+
+  <div *ngIf="auth.user$ | async as user">
+    <button (click)="logout()">Log out</button><br/>
+    <a [routerLink]="['main']">main</a><br/>
+    user profile<br/>
+    <ul>
+      <li>{{ user.name }}</li>
+      <li>{{ user.email }}</li>
+    </ul>
+    <pre>
+      <code>{{user | json}}</code>
+    </pre>
+  </div>
+
+  <button (click)="onPop()">getAccessTokenWithPopup</button>
+</div>
